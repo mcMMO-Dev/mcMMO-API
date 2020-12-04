@@ -19,6 +19,11 @@
             <artifactId>guava</artifactId>
             <version>28.2-jre</version>
         </dependency>
+        <dependency>
+            <groupId>com.neetgames.jmal</groupId>
+            <artifactId>jmal</artifactId>
+            <version>0.01.00-SNAPSHOT</version>
+        </dependency>
     </dependencies>
 
     <properties>

@@ -1,6 +1,6 @@
 package com.neetgames.mcmmo.experience.context;
 
-import com.neetgames.jmaw.LivingEntity;
+import com.neetgames.jmal.LivingEntity;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 

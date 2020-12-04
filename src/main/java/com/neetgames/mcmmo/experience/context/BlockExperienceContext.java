@@ -1,6 +1,6 @@
 package com.neetgames.mcmmo.experience.context;
 
-import com.neetgames.jmaw.Block;
+import com.neetgames.jmal.Block;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
