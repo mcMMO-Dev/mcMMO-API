@@ -1,0 +1,13 @@
+package com.neetgames.mcmmo.exceptions;
+
+public class InvalidSkillException extends RuntimeException {
+    private static final long serialVersionUID = 942705284195791157L;
+
+    public InvalidSkillException() {
+        super("That is not a valid skill.");
+    }
+
+    public InvalidSkillException(String msg) {
+        super(msg);
+    }
+}
