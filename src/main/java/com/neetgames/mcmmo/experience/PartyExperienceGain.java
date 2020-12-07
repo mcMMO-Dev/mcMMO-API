@@ -1,6 +1,6 @@
 package com.neetgames.mcmmo.experience;
 
-public interface PartyExperienceGain extends com.neetgames.mcmmo.experience.ExperienceGain {
+public interface PartyExperienceGain extends ExperienceGain {
 
     /**
      * The original value of this experience gain

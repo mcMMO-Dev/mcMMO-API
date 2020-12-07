@@ -10,6 +10,6 @@ public interface BlockExperienceContext extends ExperienceContext {
      *
      * @return the {@link Block} involved in this experience context
      */
-    @NotNull Block getBlockExperienceContext();
+    @NotNull Block getBlock();
 
 }

@@ -15,8 +15,6 @@
 
 # gradle
 /.gradle
-/mcMMO-core/.gradle
-/mcMMO-core/gradle
 
 # netbeans
 /nbproject
@@ -46,9 +44,6 @@
 *.ipr
 *.iws
 .idea/
-
-# Project Stuff
-/src/main/resources/mcMMO
 
 # Other Libraries
 *.jar

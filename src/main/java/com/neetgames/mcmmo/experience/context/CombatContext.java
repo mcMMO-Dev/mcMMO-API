@@ -2,9 +2,8 @@ package com.neetgames.mcmmo.experience.context;
 
 import com.neetgames.jmal.LivingEntity;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
-public class CombatContext implements ExperienceContext {
+public class CombatContext implements CombatExperienceContext {
 
     private final @NotNull LivingEntity livingEntity;
 
@@ -12,17 +11,12 @@ public class CombatContext implements ExperienceContext {
         this.livingEntity = livingEntity;
     }
 
-    @Nullable
-    @Override
-    public Object getContext() {
-        return livingEntity;
-    }
-
     /**
      * Get the {@link LivingEntity} involved in this experience context
      *
      * @return the {@link LivingEntity} involved in this experience context
      */
+    @Override
     public @NotNull LivingEntity getLivingEntity() {
         return livingEntity;
     }
