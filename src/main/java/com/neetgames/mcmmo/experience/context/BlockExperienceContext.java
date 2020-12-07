@@ -2,28 +2,14 @@ package com.neetgames.mcmmo.experience.context;
 
 import com.neetgames.jmal.Block;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
-public class BlockExperienceContext implements ExperienceContext {
-
-    @NotNull Block blockExperienceContext;
-
-    public BlockExperienceContext(@NotNull Block block) {
-        this.blockExperienceContext = block;
-    }
-
-    @Nullable
-    @Override
-    public Object getContext() {
-        return blockExperienceContext;
-    }
+public interface BlockExperienceContext extends ExperienceContext {
 
     /**
-     * Get the {@link Block} involved in this experience context
+     * Get the Block involved in this experience context
      *
      * @return the {@link Block} involved in this experience context
      */
-    public @NotNull Block getBlockExperienceContext() {
-        return blockExperienceContext;
-    }
+    @NotNull Block getBlockExperienceContext();
+
 }
