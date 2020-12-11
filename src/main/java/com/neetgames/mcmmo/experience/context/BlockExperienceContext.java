@@ -1,6 +1,6 @@
 package com.neetgames.mcmmo.experience.context;
 
-import com.neetgames.jmal.Block;
+import com.neetgames.jmal.core.block.Block;
 import org.jetbrains.annotations.NotNull;
 
 public interface BlockExperienceContext extends ExperienceContext {

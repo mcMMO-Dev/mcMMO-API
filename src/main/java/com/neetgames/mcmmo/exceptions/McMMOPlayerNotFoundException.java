@@ -1,6 +1,6 @@
 package com.neetgames.mcmmo.exceptions;
 
-import com.neetgames.jmal.Player;
+import com.neetgames.jmal.core.player.Player;
 import org.jetbrains.annotations.NotNull;
 
 public class McMMOPlayerNotFoundException extends RuntimeException {

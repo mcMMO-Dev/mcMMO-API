@@ -1,6 +1,6 @@
 package com.neetgames.mcmmo.experience.context;
 
-import com.neetgames.jmal.LivingEntity;
+import com.neetgames.jmal.core.entity.LivingEntity;
 import org.jetbrains.annotations.NotNull;
 
 public class CombatContext implements CombatExperienceContext {

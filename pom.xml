@@ -11,8 +11,7 @@
         <dependency>
             <groupId>org.jetbrains</groupId>
             <artifactId>annotations</artifactId>
-            <version>RELEASE</version>
-            <scope>compile</scope>
+            <version>19.0.0</version>
         </dependency>
         <dependency>
             <groupId>com.google.guava</groupId>
@@ -21,7 +20,7 @@
         </dependency>
         <dependency>
             <groupId>com.neetgames</groupId>
-            <artifactId>jmal</artifactId>
+            <artifactId>jmal-core</artifactId>
             <version>0.01.00-SNAPSHOT</version>
         </dependency>
     </dependencies>
