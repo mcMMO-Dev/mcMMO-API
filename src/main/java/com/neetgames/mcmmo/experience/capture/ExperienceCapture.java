@@ -2,7 +2,7 @@ package com.neetgames.mcmmo.experience.capture;
 
 import com.neetgames.mcmmo.experience.context.ExperienceContext;
 import com.neetgames.mcmmo.player.MMOPlayer;
-import com.neetgames.mcmmo.skill.SkillIdentity;
+import com.neetgames.mcmmo.skill.Skill;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -13,7 +13,7 @@ public interface ExperienceCapture {
      *
      * @return the skills involved in this experience capture
      */
-    @NotNull SkillIdentity[] getSkills();
+    @NotNull Skill[] getSkills();
 
     /**
      * Grab the {@link ExperienceContext} related to this experience capture
@@ -26,10 +26,10 @@ public interface ExperienceCapture {
     /**
      * Check whether or not a skill is targeted in this experience capture
      *
-     * @param skillIdentity target skill
+     * @param skill target skill
      * @return true if this skill is targeted in this experience capture
      */
-    boolean isSkillAffected(@NotNull SkillIdentity skillIdentity);
+    boolean isSkillAffected(@NotNull Skill skill);
 
     /**
      * Check whether or not a skill is targeted in this experience capture
