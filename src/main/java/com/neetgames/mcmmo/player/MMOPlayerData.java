@@ -237,7 +237,7 @@ interface MMOPlayerData {
      */
     void setLeaderBoardExclusion(boolean bool);
 
-    ImmutableMap<Skill, Integer> copyPrimarySkillLevelsMap();
+    @NotNull ImmutableMap<Skill, Integer> copyPrimarySkillLevelsMap();
 
-    ImmutableMap<Skill, Float> copyPrimarySkillExperienceValuesMap();
+    @NotNull ImmutableMap<Skill, Float> copyPrimarySkillExperienceValuesMap();
 }
