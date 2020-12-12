@@ -14,7 +14,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Map;
 import java.util.UUID;
 
-interface MMOPlayerData {
+public interface MMOPlayerData {
     /**
      * Set the level of a Primary Skill for the Player
      * @param primarySkillType target Primary Skill
