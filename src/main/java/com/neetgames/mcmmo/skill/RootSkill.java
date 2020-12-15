@@ -9,3 +9,4 @@ public interface RootSkill extends Skill {
 
     default @Override boolean hasParent() { return false; }
 }
+

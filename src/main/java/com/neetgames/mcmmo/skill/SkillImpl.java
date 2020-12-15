@@ -11,7 +11,7 @@ public class SkillImpl implements Skill {
     private final @NotNull SkillIdentity skillIdentity;
     private final @NotNull String skillName;
 
-    public SkillImpl(@NotNull RootSkill parentSkill, @Nullable String permission, @NotNull String pluginName, @NotNull String skillName) {
+    public SkillImpl(@NotNull String pluginName, @NotNull String skillName, @Nullable String permission, @NotNull RootSkill parentSkill) {
         this.parentSkill = parentSkill;
         this.permission = permission;
         this.skillName = skillName;
@@ -19,12 +19,17 @@ public class SkillImpl implements Skill {
         this.skillIdentity = new SkillIdentityImpl(pluginName, skillName, parentSkill);
     }
 
-    public SkillImpl(@Nullable String permission, @NotNull String pluginName, @NotNull String skillName) {
+    public SkillImpl(@NotNull String pluginName, @NotNull String skillName, @Nullable String permission) {
         this.permission = permission;
         this.skillName = skillName;
         this.parentSkill = null;
 
         this.skillIdentity = new SkillIdentityImpl(pluginName, skillName);
+    }
+
+    @Override
+    public @NotNull String getSkillName() {
+        return skillName;
     }
 
     @Override
@@ -43,14 +48,14 @@ public class SkillImpl implements Skill {
     }
 
     @Override
-    public boolean isParent(@NotNull SkillIdentity skillIdentity) {
+    public boolean isChildOf(@NotNull SkillIdentity skillIdentity) {
         if(parentSkill == null)
             return false;
         else return skillIdentity.equals(parentSkill.getSkillIdentity());
     }
 
     @Override
-    public boolean isParent(@NotNull RootSkill rootSkill) {
+    public boolean isChildOf(@NotNull RootSkill rootSkill) {
         if(parentSkill == null)
             return false;
         else return skillIdentity.equals(parentSkill.getSkillIdentity());

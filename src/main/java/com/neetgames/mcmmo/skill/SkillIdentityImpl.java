@@ -10,26 +10,23 @@ public class SkillIdentityImpl implements SkillIdentity {
     public static final @NotNull String SKILL_NAMESPACE_SEPARATOR = ".";
     private final @NotNull String nameSpace;
     private final @NotNull String skillName;
-    private final @Nullable RootSkill parentSkill;
 
     private final @NotNull String fullyQualifiedName;
 
     //TODO: Don't allow parameters to have certain characters like .
-    public SkillIdentityImpl(@NotNull String nameSpace, @NotNull String skillName, @Nullable RootSkill parentSkill) {
+    public SkillIdentityImpl(@NotNull String nameSpace, @NotNull String skillName, @NotNull RootSkill parentSkill) {
         this.nameSpace = nameSpace.toLowerCase(Locale.ENGLISH);
         this.skillName = skillName.toLowerCase(Locale.ENGLISH);
-        this.parentSkill = parentSkill;
 
-        fullyQualifiedName = genFullyQualifiedName();
+        fullyQualifiedName = genFullyQualifiedName(parentSkill.getSkillIdentity(), nameSpace, skillName);
     }
 
     //TODO: Don't allow parameters to have certain characters like .
     public SkillIdentityImpl(@NotNull String nameSpace, @NotNull String skillName) {
         this.nameSpace = nameSpace;
         this.skillName = skillName;
-        this.parentSkill = null;
 
-        fullyQualifiedName = genFullyQualifiedName();
+        fullyQualifiedName = genFullyQualifiedName(null, nameSpace, skillName);
     }
 
     /**
@@ -37,12 +34,12 @@ public class SkillIdentityImpl implements SkillIdentity {
      *
      * @return the fully qualified name for this skill
      */
-    private @NotNull String genFullyQualifiedName() {
+    private @NotNull String genFullyQualifiedName(@Nullable SkillIdentity parentSkillIdentity, @NotNull String nameSpace, @NotNull String skillName) {
         StringBuilder stringBuilder = new StringBuilder();
 
-        if(parentSkill != null) {
+        if(parentSkillIdentity != null) {
             stringBuilder
-                    .append(parentSkill.getSkillIdentity().getFullyQualifiedName())
+                    .append(parentSkillIdentity.getFullyQualifiedName())
                     .append(SKILL_NAMESPACE_SEPARATOR)
                     .append(skillName);
         } else {
