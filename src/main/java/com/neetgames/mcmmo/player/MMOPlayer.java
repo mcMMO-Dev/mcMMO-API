@@ -18,7 +18,5 @@ public interface MMOPlayer extends MMOPlayerDataContainer {
 
     int getExperienceToNextLevel();
 
-    void savePlayerData();
-
     boolean isOnline();
 }
