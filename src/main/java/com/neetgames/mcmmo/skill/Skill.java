@@ -22,7 +22,7 @@ import org.jetbrains.annotations.Nullable;
  * A fully qualified name is generated based on the namespace and skill name
  * @see #getFullyQualifiedName()
  */
-public interface Skill {
+public interface Skill extends Permissive {
 
     /**
      * Creates a fully qualified name for this skill
