@@ -20,7 +20,7 @@ import org.jetbrains.annotations.Nullable;
  * Skills are registered, no two skills can share the same fully qualified name (in this case, a combination of the namespace and skill name)
  *
  * A fully qualified name is generated based on the namespace and skill name
- * @see #genFullyQualifiedName()
+ * @see #getFullyQualifiedName()
  */
 public interface Skill {
 
@@ -28,14 +28,16 @@ public interface Skill {
      * Creates a fully qualified name for this skill
      * @return the fully qualified name for this skill
      */
-    @NotNull String genFullyQualifiedName();
+    @NotNull String getFullyQualifiedName();
 
     /**
-     * Whether or not this skill has a parent
-     * @return true if this skill has a parent
+     * Whether or not this skill is a {@link RootSkill}
+     * {@link RootSkill} are the skills at the very top of the hierarchy, they are always parentless
+     *
+     * @return true if this skill is a {@link RootSkill}
      */
     default boolean isRootSkill() {
-        return getParent() == null;
+        return this instanceof RootSkill;
     }
 
     /**

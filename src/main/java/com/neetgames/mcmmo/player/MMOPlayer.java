@@ -14,9 +14,9 @@ public interface MMOPlayer extends MMOPlayerDataContainer {
 
     int getSkillLevel(@NotNull Skill skill);
 
-    int getSkillExperience();
+    int getSkillExperience(@NotNull Skill skill);
 
-    int getExperienceToNextLevel();
+    int getExperienceToNextLevel(@NotNull Skill skill);
 
     boolean isOnline();
 }
