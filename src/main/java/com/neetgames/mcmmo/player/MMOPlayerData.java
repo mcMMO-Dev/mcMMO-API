@@ -1,10 +1,12 @@
 package com.neetgames.mcmmo.player;
 
 import com.google.common.collect.ImmutableMap;
-import com.neetgames.mcmmo.MobHealthBarType;
 import com.neetgames.mcmmo.UniqueDataType;
-import com.neetgames.mcmmo.skill.Skill;
+import com.neetgames.mcmmo.exceptions.ExpectedRootSkillException;
+import com.neetgames.mcmmo.exceptions.UnknownSkillException;
+import com.neetgames.mcmmo.skill.RootSkill;
 import com.neetgames.mcmmo.skill.SkillBossBarState;
+import com.neetgames.mcmmo.skill.SkillIdentity;
 import com.neetgames.mcmmo.skill.SuperSkill;
 import com.neetgames.neetlib.dirtydata.DirtyData;
 import com.neetgames.neetlib.dirtydata.DirtyMap;
@@ -16,18 +18,37 @@ import java.util.UUID;
 
 public interface MMOPlayerData {
     /**
-     * Set the level of a Primary Skill for the Player
-     * @param primarySkillType target Primary Skill
-     * @param newSkillLevel the new value of the skill
+     * Set the level of a {@link RootSkill}
+     * Skills that aren't registered will throw errors, so check with the {@link com.neetgames.mcmmo.api.SkillRegister} implementation first
+     *
+     * @param skillIdentity the skill identity for the target skill
+     * @param newSkillLevel the new value of the target skill
+     * @throws UnknownSkillException if the skill identity does not match a registered root skill
+     * @throws ExpectedRootSkillException when a skill is matched in the {@link com.neetgames.mcmmo.api.SkillRegister} but its not of type Root Skill
+     *
+     * @deprecated when possible use {@link #setSkillLevel(RootSkill, int)} instead of this method
+     *
      */
-    void setSkillLevel(Skill primarySkillType, int newSkillLevel);
+    @Deprecated
+    void setSkillLevel(@NotNull SkillIdentity skillIdentity, int newSkillLevel) throws UnknownSkillException, ExpectedRootSkillException;
 
     /**
-     * Get the skill level the player currently has for target Primary Skill
-     * @param primarySkillType target Primary Skill
-     * @return the current level value of target Primary Skill
+     * Set the level of a root skill for the Player
+     * Skills that aren't registered will throw errors, so check with the {@link com.neetgames.mcmmo.api.SkillRegister} implementation first
+     *
+     * @param rootSkill target root skill
+     * @param newSkillLevel the new value of the skill
      */
-    int getSkillLevel(Skill primarySkillType);
+    void setSkillLevel(@NotNull RootSkill rootSkill, int newSkillLevel) throws UnknownSkillException;
+
+    /**
+     * Get the skill level the player currently has for target root skill
+     * Skills that aren't registered will throw errors, so check with the {@link com.neetgames.mcmmo.api.SkillRegister} implementation first
+     *
+     * @param rootSkill target root skill
+     * @return the current level value of target root skill
+     */
+    int getSkillLevel(@NotNull RootSkill rootSkill) throws UnknownSkillException;
 
     /**
      * True if the persistent data has changed state and not yet saved to DB
@@ -43,27 +64,19 @@ public interface MMOPlayerData {
 
     /**
      * The saved player name for the player associated with this data
+     * This will be the player name as it is saved in the mcMMO DB
+     * The name in the mcMMO DB is updated when it is found to have changed, player nicknames in Minecraft are volatile so keep this in mind
+     *
      * @return the saved player name for the player associated with this data
      */
     @NotNull String getPlayerName();
 
     /**
      * The {@link UUID} for the player associated with this data
+     *
      * @return the UUID for the player associated with this data
      */
     @NotNull UUID getPlayerUUID();
-
-    /**
-     * This player's saved mob health bar type
-     * @return the saved mob health bar type for this player
-     */
-    @NotNull MobHealthBarType getMobHealthBarType();
-
-    /**
-     * Change the mob health bar type for this player
-     * @param mobHealthBarType the new mob health bar type for this player
-     */
-    void setMobHealthBarType(@NotNull MobHealthBarType mobHealthBarType);
 
     /*
      * Party Chat Spy
@@ -71,6 +84,7 @@ public interface MMOPlayerData {
 
     /**
      * Whether or not this player is currently spying on all party chat
+     *
      * @return true if this player is spying on party chat
      */
     boolean isPartyChatSpying();
@@ -155,89 +169,103 @@ public interface MMOPlayerData {
 
     /**
      * Get the {@link Map} for the related {@link SkillBossBarState}'s of this player
+     *
      * @return the bar state map for this player
      */
-    @NotNull Map<Skill, SkillBossBarState> getBarStateMap();
+    @NotNull Map<RootSkill, SkillBossBarState> getBarStateMap();
 
     /**
      * Get the {@link DirtyMap} for the related {@link SkillBossBarState}'s of this player
+     *
      * @return the dirty bar state map for this player
      */
-    @NotNull DirtyMap<Skill, SkillBossBarState> getDirtyBarStateMap();
+    @NotNull DirtyMap<RootSkill, SkillBossBarState> getDirtyBarStateMap();
 
     /**
      * Get the {@link DirtyMap} for the skill levels of this player
+     *
      * @return the dirty skill level map for this player
      */
-    @NotNull DirtyMap<Skill, Integer> getDirtySkillLevelMap();
+    @NotNull DirtyMap<RootSkill, Integer> getDirtySkillLevelMap();
 
     /**
      * Get the {@link DirtyMap} for the skill experience values of this player
+     *
      * @return the dirty skill experience values map for this player
      */
-    @NotNull DirtyMap<Skill, Float> getDirtyExperienceValueMap();
+    @NotNull DirtyMap<RootSkill, Float> getDirtyExperienceValueMap();
 
     /**
      * Get the {@link DirtyData<MutableBoolean>} for the party chat toggle for this player
+     *
      * @return the dirty data for the party chat toggle for this player
      */
     @NotNull DirtyData<MutableBoolean> getDirtyPartyChatSpying();
 
     /**
      * Get the skill level map for this player
+     *
      * @return the map of skill levels for this player
      */
-    @NotNull Map<Skill, Integer> getSkillLevelsMap();
+    @NotNull Map<RootSkill, Integer> getSkillLevelsMap();
 
     /**
      * Get the map of experience values for skills for this player
+     *
      * @return the experience values map for this player
      */
-    @NotNull Map<Skill, Float> getSkillsExperienceMap();
+    @NotNull Map<RootSkill, Float> getSkillsExperienceMap();
 
     /**
      * Get the map of timestamps representing the last use of abilities for this player
+     *
      * @return the ability deactivation timestamps map for this player
      */
     @NotNull Map<SuperSkill, Integer> getAbilityDeactivationTimestamps();
 
     /**
      * Get a map of various unique data for this player
+     *
      * @return a map of unique data for this player
      */
     @NotNull Map<UniqueDataType, Integer> getUniquePlayerData();
 
     /**
      * Mark this data as dirty which will flag this data for the next appropriate save
+     *
      * Saves happen periodically, they also can happen on server shutdown and when the player disconnects from the server
      */
     void setDirtyProfile();
 
     /**
      * The timestamp of when this player last logged in
+     *
      * @return the timestamp of when this player last logged in
      */
     long getLastLogin();
 
     /**
      * Set the value of when this player last logged in
+     *
      * @param newValue the new time stamp
      */
     void setLastLogin(long newValue);
 
     /**
      * Whether or not this player is exempt from leader boards
+     *
      * @return true if excluded from leader boards
      */
     boolean isLeaderBoardExcluded();
 
     /**
      * Set whether or not this player is excluded from leader boards
+     *
      * @param bool new value
      */
     void setLeaderBoardExclusion(boolean bool);
 
-    @NotNull ImmutableMap<Skill, Integer> copyPrimarySkillLevelsMap();
+    @NotNull ImmutableMap<RootSkill, Integer> copyPrimarySkillLevelsMap();
 
-    @NotNull ImmutableMap<Skill, Float> copyPrimarySkillExperienceValuesMap();
+    @NotNull ImmutableMap<RootSkill, Float> copyPrimarySkillExperienceValuesMap();
 }
