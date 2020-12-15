@@ -57,7 +57,7 @@ public interface SkillRegister {
      * @param skillIdentity the skill identity of a skill
      * @return the skill with the same fully qualified name, null if the skill is not found in the register
      */
-    @Nullable Skill getSkill(@NotNull NamespacedSkill skillIdentity);
+    @Nullable Skill getSkill(@NotNull SkillIdentity skillIdentity);
 
     /**
      * Get all registered skills which are of type {@link SuperSkill}
