@@ -7,15 +7,15 @@ import org.jetbrains.annotations.Nullable;
 import java.util.Locale;
 
 public class SkillIdentityImpl implements SkillIdentity {
-    public static final String SKILL_NAMESPACE_SEPARATOR = ".";
+    public static final @NotNull String SKILL_NAMESPACE_SEPARATOR = ".";
     private final @NotNull String nameSpace;
     private final @NotNull String skillName;
-    private final @Nullable SkillIdentity parentSkill;
+    private final @Nullable RootSkill parentSkill;
 
-    @NotNull private final String fullyQualifiedName;
+    private final @NotNull String fullyQualifiedName;
 
     //TODO: Don't allow parameters to have certain characters like .
-    public SkillIdentityImpl(@NotNull String nameSpace, @NotNull String skillName, @Nullable SkillIdentity parentSkill) {
+    public SkillIdentityImpl(@NotNull String nameSpace, @NotNull String skillName, @Nullable RootSkill parentSkill) {
         this.nameSpace = nameSpace.toLowerCase(Locale.ENGLISH);
         this.skillName = skillName.toLowerCase(Locale.ENGLISH);
         this.parentSkill = parentSkill;
@@ -42,7 +42,7 @@ public class SkillIdentityImpl implements SkillIdentity {
 
         if(parentSkill != null) {
             stringBuilder
-                    .append(parentSkill.getFullyQualifiedName())
+                    .append(parentSkill.getSkillIdentity().getFullyQualifiedName())
                     .append(SKILL_NAMESPACE_SEPARATOR)
                     .append(skillName);
         } else {
@@ -54,6 +54,7 @@ public class SkillIdentityImpl implements SkillIdentity {
         return stringBuilder.toString();
     }
 
+    @Override
     public @NotNull String getFullyQualifiedName() {
         return fullyQualifiedName;
     }
@@ -69,5 +70,15 @@ public class SkillIdentityImpl implements SkillIdentity {
     @Override
     public int hashCode() {
         return Objects.hashCode(fullyQualifiedName);
+    }
+
+    @Override
+    public @NotNull String getNamespace() {
+        return nameSpace;
+    }
+
+    @Override
+    public @NotNull String getSkillName() {
+        return skillName;
     }
 }

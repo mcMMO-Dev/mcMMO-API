@@ -4,6 +4,12 @@ import com.neetgames.mcmmo.player.OnlineMMOPlayer;
 import org.jetbrains.annotations.NotNull;
 
 public interface SuperSkill extends Skill {
+    /**
+     * The default cooldown, this would be for any player who had no modifiers
+     * Many things can modify the cooldown duration, the default duration is simply as its defined in the users config file
+     *
+     * @return the default duration for this skills cooldown
+     */
     int getDefaultCooldown();
 
     /**
