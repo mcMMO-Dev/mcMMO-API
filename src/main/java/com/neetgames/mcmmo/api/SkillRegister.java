@@ -79,4 +79,11 @@ public interface SkillRegister {
      * @return all registered {@link RootSkill}, the returned set can be empty but never null
      */
     @NotNull Set<RootSkill> getRootSkills();
+
+    /**
+     * Get all registered skills which are of type {@link RootSkill} and are official skills
+     *
+     * @return all registered core {@link RootSkill}s, the returned set can be empty but never null
+     */
+    @NotNull Set<RootSkill> getCoreRootSkills();
 }
