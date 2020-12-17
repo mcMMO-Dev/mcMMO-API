@@ -1,5 +1,6 @@
 package com.neetgames.mcmmo.player;
 
+import com.neetgames.mcmmo.exceptions.UnknownSkillException;
 import com.neetgames.mcmmo.skill.SkillIdentity;
 import org.jetbrains.annotations.NotNull;
 
@@ -12,11 +13,13 @@ public interface MMOPlayer extends MMOPlayerDataContainer {
 
     int getPowerLevel();
 
-    int getSkillLevel(@NotNull SkillIdentity skillIdentity);
+    int getSkillLevel(@NotNull SkillIdentity skillIdentity) throws UnknownSkillException;
 
-    int getSkillExperience(@NotNull SkillIdentity skillIdentity);
+    int getSkillExperience(@NotNull SkillIdentity skillIdentity) throws UnknownSkillException;
 
-    int getExperienceToNextLevel(@NotNull SkillIdentity skillIdentity);
+    int getExperienceToNextLevel(@NotNull SkillIdentity skillIdentity) throws UnknownSkillException;
+
+    double getProgressInCurrentSkillLevel(@NotNull SkillIdentity skillIdentity) throws UnknownSkillException;
 
     boolean isOnline();
 }
