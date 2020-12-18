@@ -26,8 +26,6 @@ public interface MMOPlayerData {
      * @throws UnknownSkillException if the skill identity does not match a registered root skill
      * @throws ExpectedRootSkillException when a skill is matched in the {@link com.neetgames.mcmmo.api.SkillRegister} but its not of type Root Skill
      *
-     * @deprecated when possible use {@link #setSkillLevel(RootSkill, int)} instead of this method
-     *
      */
     @Deprecated
     void setSkillLevel(@NotNull SkillIdentity skillIdentity, int newSkillLevel) throws UnknownSkillException, ExpectedRootSkillException;
