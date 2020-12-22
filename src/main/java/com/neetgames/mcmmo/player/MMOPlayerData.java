@@ -2,11 +2,9 @@ package com.neetgames.mcmmo.player;
 
 import com.google.common.collect.ImmutableMap;
 import com.neetgames.mcmmo.UniqueDataType;
-import com.neetgames.mcmmo.exceptions.ExpectedRootSkillException;
 import com.neetgames.mcmmo.exceptions.UnknownSkillException;
 import com.neetgames.mcmmo.skill.RootSkill;
 import com.neetgames.mcmmo.skill.SkillBossBarState;
-import com.neetgames.mcmmo.skill.SkillIdentity;
 import com.neetgames.mcmmo.skill.SuperSkill;
 import com.neetgames.neetlib.dirtydata.DirtyData;
 import com.neetgames.neetlib.dirtydata.DirtyMap;
@@ -17,18 +15,6 @@ import java.util.Map;
 import java.util.UUID;
 
 public interface MMOPlayerData {
-//    /**
-//     * Set the level of a {@link RootSkill}
-//     * Skills that aren't registered will throw errors, so check with the {@link com.neetgames.mcmmo.api.SkillRegister} implementation first
-//     *
-//     * @param skillIdentity the skill identity for the target skill
-//     * @param newSkillLevel the new value of the target skill
-//     * @throws UnknownSkillException if the skill identity does not match a registered root skill
-//     * @throws ExpectedRootSkillException when a skill is matched in the {@link com.neetgames.mcmmo.api.SkillRegister} but its not of type Root Skill
-//     *
-//     */
-//    @Deprecated
-//    void setSkillLevel(@NotNull SkillIdentity skillIdentity, int newSkillLevel) throws UnknownSkillException, ExpectedRootSkillException;
 
     /**
      * Set the level of a root skill for the Player

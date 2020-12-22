@@ -78,4 +78,13 @@ public class SkillIdentityImpl implements SkillIdentity {
     public @NotNull String getSkillName() {
         return skillName;
     }
+
+    @Override
+    public String toString() {
+        return "SkillIdentityImpl{" +
+                "nameSpace='" + nameSpace + '\'' +
+                ", skillName='" + skillName + '\'' +
+                ", fullyQualifiedName='" + fullyQualifiedName + '\'' +
+                '}';
+    }
 }
