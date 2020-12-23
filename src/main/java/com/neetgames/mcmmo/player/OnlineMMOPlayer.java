@@ -11,6 +11,8 @@ public interface OnlineMMOPlayer extends MMOPlayer {
 
     boolean isChatSpying();
 
+    void togglePartyChatSpying();
+
     void sendMessage(@NotNull String message);
 
     boolean hasSkillChatNotifications();
