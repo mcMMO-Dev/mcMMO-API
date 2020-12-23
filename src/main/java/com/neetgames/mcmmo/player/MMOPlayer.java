@@ -1,12 +1,13 @@
 package com.neetgames.mcmmo.player;
 
 import com.neetgames.mcmmo.exceptions.UnknownSkillException;
+import com.neetgames.mcmmo.experience.ExperienceContainer;
 import com.neetgames.mcmmo.skill.SkillIdentity;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.UUID;
 
-public interface MMOPlayer extends MMOPlayerDataContainer {
+public interface MMOPlayer extends MMOPlayerDataContainer, ExperienceContainer {
     @NotNull UUID getUUID();
 
     @NotNull String getPlayerName();

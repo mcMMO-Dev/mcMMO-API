@@ -1,5 +1,6 @@
 package com.neetgames.mcmmo.player;
 
+import com.neetgames.mcmmo.skill.RootSkill;
 import org.jetbrains.annotations.NotNull;
 
 public interface OnlineMMOPlayer extends MMOPlayer {
@@ -15,4 +16,6 @@ public interface OnlineMMOPlayer extends MMOPlayer {
     boolean hasSkillChatNotifications();
     
     @NotNull Object getServerAPIPlayerImpl();
+
+    void updateXPBar(@NotNull RootSkill rootSkill);
 }
