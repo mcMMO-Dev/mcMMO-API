@@ -86,4 +86,12 @@ public interface SkillRegister {
      * @return all registered core {@link RootSkill}s, the returned set can be empty but never null
      */
     @NotNull Set<RootSkill> getCoreRootSkills();
+
+    /**
+     * Used to match skill by the skills name, also checks against the Skill Identity so both are legal
+     *
+     * @param skillName skill name or skill identity
+     * @return The matching {@link RootSkill} if it exists
+     */
+    @Nullable RootSkill matchRootSkill(@NotNull String skillName);
 }

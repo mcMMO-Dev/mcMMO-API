@@ -34,4 +34,12 @@ public interface OnlineMMOPlayer extends MMOPlayer {
      * Check if a player should be in a party or not, and removes them if they should not
      */
     void validateParty();
+
+    /**
+     * Check a permission for this player
+     *
+     * @param permissionAddress the address of the permission
+     * @return true if player has permission
+     */
+    boolean hasPermission(@NotNull String permissionAddress);
 }
