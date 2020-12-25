@@ -85,7 +85,7 @@ public interface SkillRegister {
      *
      * @return all registered core {@link RootSkill}s, the returned set can be empty but never null
      */
-    @NotNull Set<RootSkill> getCoreRootSkills();
+    @NotNull Set<? extends RootSkill> getCoreRootSkills();
 
     /**
      * Used to match skill by the skills name, also checks against the Skill Identity so both are legal

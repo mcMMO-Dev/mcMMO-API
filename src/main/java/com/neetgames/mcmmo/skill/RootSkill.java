@@ -6,7 +6,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 public interface RootSkill extends Skill {
-    default @Override @Nullable Skill getParent() {
+    default @Override @Nullable RootSkill getParent() {
         return null;
     }
 
@@ -69,6 +69,6 @@ public interface RootSkill extends Skill {
      * @param targetEntity the target entity
      * @return true if the action is allowed
      */
-    boolean isOffensiveActionAllowed(@NotNull Entity targetEntity);
+    boolean isOffensiveActionAllowed(@NotNull Object targetEntity);
 }
 

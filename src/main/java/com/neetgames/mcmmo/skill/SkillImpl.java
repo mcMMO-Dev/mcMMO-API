@@ -6,7 +6,7 @@ import org.jetbrains.annotations.Nullable;
 
 public class SkillImpl implements Skill {
 
-    private final @Nullable RootSkill parentSkill;
+    private final @NotNull RootSkill parentSkill;
     private final @Nullable String permission;
     private final @NotNull SkillIdentity skillIdentity;
     private final @NotNull String skillName;
@@ -17,14 +17,6 @@ public class SkillImpl implements Skill {
         this.skillName = skillName;
 
         this.skillIdentity = new SkillIdentityImpl(pluginName, skillName, parentSkill);
-    }
-
-    public SkillImpl(@NotNull String pluginName, @NotNull String skillName, @Nullable String permission) {
-        this.permission = permission;
-        this.skillName = skillName;
-        this.parentSkill = null;
-
-        this.skillIdentity = new SkillIdentityImpl(pluginName, skillName);
     }
 
     @Override
@@ -38,7 +30,7 @@ public class SkillImpl implements Skill {
     }
 
     @Override
-    public @Nullable Skill getParent() {
+    public @NotNull RootSkill getParent() {
         return parentSkill;
     }
 

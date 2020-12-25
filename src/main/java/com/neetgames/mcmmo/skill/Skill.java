@@ -19,7 +19,7 @@ public interface Skill extends Permissive, NamespacedSkill {
      * Grab the parent of this skill if it exists
      * @return the parent for this skill, null if the skill does not have one
      */
-    @Nullable Skill getParent();
+    @Nullable RootSkill getParent();
 
     /**
      * The skill name, this is not localized and English should be expected
@@ -27,13 +27,6 @@ public interface Skill extends Permissive, NamespacedSkill {
      * @return the unlocalized skill name
      */
     @NotNull String getRawSkillName();
-
-    /**
-     * Whether or not this skill has a parent
-     *
-     * @return whether or not this skill has a parent
-     */
-    default boolean hasParent() { return getParent() != null; }
 
     /**
      * Whether or not the provided {@link SkillIdentity} is the parent of this {@link Skill}
