@@ -28,7 +28,7 @@ public class SkillImpl implements Skill {
     }
 
     @Override
-    public @NotNull String getSkillName() {
+    public @NotNull String getRawSkillName() {
         return skillName;
     }
 

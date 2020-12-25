@@ -4,13 +4,13 @@ import com.google.common.base.Objects;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-public class RootSkillImpl implements RootSkill {
+public abstract class AbstractRootSkill implements RootSkill {
 
     private final @Nullable String permission;
     private final @NotNull SkillIdentity skillIdentity;
     private final @NotNull String skillName;
 
-    public RootSkillImpl(@NotNull String pluginName, @NotNull String skillName, @Nullable String permission) {
+    public AbstractRootSkill(@NotNull String pluginName, @NotNull String skillName, @Nullable String permission) {
         this.permission = permission;
         this.skillName = skillName;
 
@@ -38,7 +38,7 @@ public class RootSkillImpl implements RootSkill {
     }
 
     @Override
-    public @NotNull String getSkillName() {
+    public @NotNull String getRawSkillName() {
         return skillName;
     }
 
@@ -51,7 +51,7 @@ public class RootSkillImpl implements RootSkill {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        RootSkillImpl rootSkill = (RootSkillImpl) o;
+        AbstractRootSkill rootSkill = (AbstractRootSkill) o;
         return Objects.equal(skillIdentity, rootSkill.skillIdentity);
     }
 

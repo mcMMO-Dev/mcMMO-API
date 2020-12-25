@@ -26,7 +26,7 @@ public interface Skill extends Permissive, NamespacedSkill {
      *
      * @return the unlocalized skill name
      */
-    @NotNull String getSkillName();
+    @NotNull String getRawSkillName();
 
     /**
      * Whether or not this skill has a parent
