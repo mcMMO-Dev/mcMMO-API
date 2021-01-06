@@ -1,7 +1,6 @@
 package com.neetgames.mcmmo.skill;
 
 import com.neetgames.jmal.core.entity.Entity;
-import com.neetgames.mcmmo.player.MMOPlayer;
 import com.neetgames.mcmmo.player.OnlineMMOPlayer;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
