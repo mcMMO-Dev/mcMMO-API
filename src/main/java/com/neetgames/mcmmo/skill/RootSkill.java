@@ -2,6 +2,7 @@ package com.neetgames.mcmmo.skill;
 
 import com.neetgames.jmal.core.entity.Entity;
 import com.neetgames.mcmmo.player.MMOPlayer;
+import com.neetgames.mcmmo.player.OnlineMMOPlayer;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -46,13 +47,13 @@ public interface RootSkill extends Skill {
     boolean getHardcoreVampirismEnabled();
 
     /**
-     * Whether or not a {@link MMOPlayer} has permission to use a skill
+     * Whether or not a {@link OnlineMMOPlayer} has permission to use a skill
      * The player must have the appropriate permission for the skill if any exists
      *
      * @param mmoPlayer target player
      * @return true if the skill is permitted
      */
-    boolean isRootSkillPermitted(@NotNull MMOPlayer mmoPlayer);
+    boolean isRootSkillPermitted(@NotNull OnlineMMOPlayer mmoPlayer);
 
     /**
      * The experience modifier for this skill, for core skills this will reflect the value defined in the config
