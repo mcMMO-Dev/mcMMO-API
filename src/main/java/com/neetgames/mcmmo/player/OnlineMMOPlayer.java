@@ -5,7 +5,7 @@ import com.neetgames.mcmmo.skill.RootSkill;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-public interface OnlineMMOPlayer extends MMOPlayer {
+public interface OnlineMMOPlayer extends MMOPlayer, SuperSkilled {
 
     boolean inParty();
 
@@ -42,4 +42,6 @@ public interface OnlineMMOPlayer extends MMOPlayer {
      * @return true if player has permission
      */
     boolean hasPermission(@NotNull String permissionAddress);
+
+
 }
