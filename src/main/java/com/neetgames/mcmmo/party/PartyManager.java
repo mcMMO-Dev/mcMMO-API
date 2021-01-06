@@ -22,13 +22,29 @@ public interface PartyManager {
     @Nullable Party queryParty(@NotNull UUID playerUUID);
 
     /**
+     * Attempts to find a party for a player by UUID
+     *
+     * @param onlineMMOPlayer target uuid
+     * @return the party if it exists otherwise null
+     */
+    @Nullable Party queryParty(@NotNull OnlineMMOPlayer onlineMMOPlayer);
+
+    /**
+     * Attempts to find a party for a player by player username
+     *
+     * @param playerName target uuid
+     * @return the party if it exists otherwise null
+     */
+    @Nullable Party queryParty(@NotNull String playerName);
+
+    /**
      * Attempts to find a party by party name
      * Party names are not case sensitive
      *
      * @param partyName party name
      * @return the party if it exists otherwise null
      */
-    @Nullable Party queryParty(@NotNull String partyName);
+    @Nullable Party queryPartyByPartyName(@NotNull String partyName);
 
     /**
      * Check if a party with a given name already exists.
@@ -73,6 +89,11 @@ public interface PartyManager {
      */
     @NotNull Set<OnlineMMOPlayer> getNearMembers(@NotNull OnlineMMOPlayer mmoPlayer);
 
+    /**
+     * Get the nearby party members which are visible to this party member
+     * @param mmoPlayer target player
+     * @return a set of players which are both near this player and visible
+     */
     @NotNull Set<OnlineMMOPlayer> getNearVisibleMembers(@NotNull OnlineMMOPlayer mmoPlayer);
 
     /**
@@ -99,40 +120,13 @@ public interface PartyManager {
      */
     @NotNull List<PartyMember> getOnlineMembers(@NotNull OnlineMMOPlayer player);
 
+    /**
+     * Get a list of all online players in this party.
+     *
+     * @param party target party
+     * @return all online players in this party
+     */
     @NotNull List<PartyMember> getOnlineMembers(@NotNull Party party);
-
-    /**
-     * Retrieve a party by its name
-     *
-     * @param partyName The party name
-     * @return the existing party, null otherwise
-     */
-    @Nullable Party getParty(@NotNull String partyName);
-
-    /**
-     * Retrieve a party by a members name
-     *
-     * @param playerName The members name
-     * @return the existing party, null otherwise
-     */
-    @Deprecated
-    @Nullable Party getPlayerParty(@NotNull String playerName);
-
-    /**
-     * Retrieve a party by a members uuid
-     *
-     * @param uuid The members uuid
-     * @return the existing party, null otherwise
-     */
-    @Nullable Party getPlayerParty(UUID uuid);
-
-    /**
-     * Retrieve a party by member
-     *
-     * @param player The member
-     * @return the existing party, null otherwise
-     */
-    @NotNull Party getParty(@NotNull PartyMember player);
 
     /**
      * Get a list of all current parties.
