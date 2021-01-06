@@ -116,7 +116,7 @@ public interface PartyManager {
      * @return the existing party, null otherwise
      */
     @Deprecated
-    @NotNull Party getPlayerParty(@NotNull String playerName);
+    @Nullable Party getPlayerParty(@NotNull String playerName);
 
     /**
      * Retrieve a party by a members uuid
@@ -124,7 +124,7 @@ public interface PartyManager {
      * @param uuid The members uuid
      * @return the existing party, null otherwise
      */
-    @NotNull Party getPlayerParty(UUID uuid);
+    @Nullable Party getPlayerParty(UUID uuid);
 
     /**
      * Retrieve a party by member
