@@ -7,6 +7,16 @@
     <groupId>com.neetgames</groupId>
     <artifactId>mcMMO-API</artifactId>
     <version>0.01.00-SNAPSHOT</version>
+    <distributionManagement>
+        <repository>
+            <id>neetgames</id>
+            <url>https://nexus.neetgames.com/repository/maven-releases/</url>
+        </repository>
+        <snapshotRepository>
+            <id>neetgames</id>
+            <url>https://nexus.neetgames.com/repository/maven-snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
     <dependencies>
         <dependency>
             <groupId>org.jetbrains</groupId>
