@@ -1,11 +1,10 @@
 package com.neetgames.mcmmo.player;
 
 import com.neetgames.mcmmo.party.Party;
-import com.neetgames.mcmmo.skill.RootSkill;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-public interface OnlineMMOPlayer extends MMOPlayer, SuperSkilled {
+public interface OnlineMMOPlayer extends MMOPlayer {
 
     boolean inParty();
 
@@ -20,8 +19,6 @@ public interface OnlineMMOPlayer extends MMOPlayer, SuperSkilled {
     boolean hasSkillChatNotifications();
     
     @NotNull Object getServerAPIPlayerImpl();
-
-    void updateXPBar(@NotNull RootSkill rootSkill);
 
     @Nullable Party getParty();
 
@@ -42,6 +39,5 @@ public interface OnlineMMOPlayer extends MMOPlayer, SuperSkilled {
      * @return true if player has permission
      */
     boolean hasPermission(@NotNull String permissionAddress);
-
 
 }
