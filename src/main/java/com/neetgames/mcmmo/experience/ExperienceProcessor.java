@@ -4,6 +4,7 @@ import com.neetgames.mcmmo.exceptions.UnknownSkillException;
 import com.neetgames.mcmmo.skill.CorePrimarySkillType;
 import org.jetbrains.annotations.NotNull;
 
+//TODO: T&C rewrite javadocs
 public interface ExperienceProcessor {
     int getSkillLevel(@NotNull CorePrimarySkillType corePrimarySkillType);
 
